@@ -1,0 +1,1 @@
+mocha --timeout 10000 --require test/support/env --check-leaks test/ test/acceptance/

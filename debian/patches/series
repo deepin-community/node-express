@@ -1,0 +1,3 @@
+workaround-node-serve-static-changes.diff
+workaround-node-path-to-regexp-changes.diff
+disable-mvc-tests.diff

@@ -1,0 +1,191 @@
+node-express (4.17.1+~cs4.17.13-1) unstable; urgency=medium
+
+  * Team upload
+  * Embed typescript definitions for express and repack
+  * Bump Standards-Version to 4.6.0 (no changes needed)
+
+ -- Vivek K J <vivekkj@protonmail.com>  Wed, 29 Sep 2021 15:23:48 +0200
+
+node-express (4.17.1-3) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Use correct machine-readable copyright file URI.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
+  * Update standards version to 4.5.0, no changes needed.
+
+  [ Xavier Guimard ]
+  * Bump debhelper compatibility level to 13
+  * Modernize debian/watch
+  * Use dh-sequence-nodejs
+  * Update test using new pkg-js-tools features
+
+ -- Xavier Guimard <yadd@debian.org>  Mon, 16 Nov 2020 18:24:18 +0100
+
+node-express (4.17.1-2) unstable; urgency=medium
+
+  * Team upload
+  * Require node-serve-static ≥ 1.14.1
+  * Require node-etag ≥ 1.8.1
+  * Remove part of test modules: cookies, etag, handlebars, mime,
+    path-to-regexp, send, superagent, supertest and destroy
+  * Update other test modules
+  * Update copyrights
+  * Add patch to be able to use recent path-to-regexp (Closes: #947042)
+  * Add build dependency to node-cookies and node-supertest
+  * Remove useless lintian overrides
+  * Temporarily disable some mvc tests
+  * Declare compliance with policy 4.4.1
+  * Add "Rules-Requires-Root: no"
+
+ -- Xavier Guimard <yadd@debian.org>  Sun, 22 Dec 2019 10:06:05 +0100
+
+node-express (4.17.1-1) unstable; urgency=medium
+
+  * Back to unstable after successful debci tests
+  * Update debian/copyright
+  * Increase test timeout
+  * fix d/copy
+  * Bump debhelper compatibility level to 12
+  * Declare compliance with policy 4.4.0
+  * Update gbp.conf
+  * New upstream version 4.17.1
+  * Clean test files
+  * Fix test after node-serve-static changes
+  * Add lintian overrides file
+  * Switch install to pkg-js-tools
+
+ -- Xavier Guimard <yadd@debian.org>  Thu, 05 Sep 2019 07:07:35 +0200
+
+node-express (4.16.4-2) experimental; urgency=medium
+
+  * Team upload
+  * Fix install (needed to enable autopkgtest)
+  * Enable upstream tests using pkg-js-tools
+
+ -- Xavier Guimard <yadd@debian.org>  Thu, 25 Apr 2019 16:05:55 +0200
+
+node-express (4.16.4-1) unstable; urgency=medium
+
+  [ Leo Iannacone ]
+  * debian/control:
+    + update Homepage URL
+
+  [ Xavier Guimard ]
+  * Add upstream/metadata
+  * Update debian/copyright links to https
+  * Update gbp.conf
+  * New upstream version 4.16.4
+  * Update debian/copyright
+  * Add myself to uploaders
+  * Switch from cdbs to dh
+  * Bump debheper compatibility level to 11
+  * Update VCS fields
+  * Declare compliance with policy 4.3.0
+  * Add minimal test
+  * Add minimal autopkgtest files
+  * Update dependencies
+  * Update homepage to https
+  * Change section to javascript
+
+ -- Xavier Guimard <yadd@debian.org>  Tue, 15 Jan 2019 22:46:47 +0100
+
+node-express (4.1.1~dfsg-1) unstable; urgency=medium
+
+  [ upstream ]
+  * New release.
+    Closes: bug#742178.
+
+  [ Jonas Smedegaard ]
+  * Use github.org (not npmjs.org) as upstream source.
+  * List URLs to source and preferred upstream contact in copyright
+    file.
+  * Update Homebase URL.
+  * Use license shortname Expat (not MIT).
+  * Wrap License paragraph at 72 chars.
+  * Repackage using CDBS, Licensed GPL-3+.
+  * Update package relations:
+    + Build-depend on cdbs.
+    + Depend on node-range-parser, node-cookie, node-buffer-crc32,
+      node-fresh, node-methods, node-send, node-cookie-signature,
+      node-debug.
+    + Stop depending on node-mime.
+    + Relax to build-depend unversioned on debhelper: Needed version
+      satisfied in stable, and oldstable is no longer supported.
+  * Update short and long description, based on Homepage.
+  * Update Vcs-* fields: Use anonscm.debian.org URLs.
+  * Add myself as uploader.
+  * Add git-buildpackage config:
+    + Enable pristine-tar and signed tags.
+    + Suppress .gitignore when importing upstream tarballs.
+  * Git-ignore quilt .pc dir.
+  * Install examples.
+  * Repackage upstream tarball to exclude test image: Embedded ICC
+    profile has copyright but lacks DFSG-free licensing.
+    Have watch file mangle debian version.
+
+  [ Leo Iannacone ]
+  * Fix watch file to mangle filename.
+  * Install package.json.
+  * Stop install executable "express": Moved to separate project
+    express-generator.
+    Drop related patch 01.
+  * Update package relations:
+    + Depend on node-parseurl, node-type-is, node-accepts,
+      node-escape-html, node-merge-descriptors, node-path-to-regexp,
+      node-serve-static and node-utils-merge.
+    + Stop depending on node-connect or node-mkdirp.
+    + Relax to depend unversioned on nodejs: Only supported versions
+      exists in any official Debian suite now.
+    + Build-depend on nodejs: Needed only as hint to resolve distro-wide
+      source<->binary relationships.
+    + Suggest node-express-generator: Provides executable "express".
+  * Bump standards-version to 3.9.5.
+  * Remove David Paleino as uploader (acknowledged by him).
+  * Add myself as uploader.
+  * Update Vcs-* fields: Packaging git moved to project area at Alioth.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 30 Apr 2014 18:31:24 +0200
+
+node-express (2.5.9-2) unstable; urgency=low
+
+  * Migrate from node to nodejs (Closes: #686890)
+  * Standards-Version bump to 3.9.4, no changes needed
+
+ -- David Paleino <dapal@debian.org>  Thu, 20 Sep 2012 11:02:11 +0200
+
+node-express (2.5.9-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- David Paleino <dapal@debian.org>  Sun, 08 Apr 2012 21:58:51 +0200
+
+node-express (2.5.8-1) unstable; urgency=low
+
+  * New upstream version
+  * Standards-Version bump to 3.9.3, no changes needed
+  * Update debian/copyright
+  * Bump dependencies on node-mime, node-qs and node-mkdirp
+
+ -- David Paleino <dapal@debian.org>  Thu, 22 Mar 2012 21:26:56 +0100
+
+node-express (2.5.0-1) unstable; urgency=low
+
+  * New upstream version
+  * Add debian/watch
+
+ -- David Paleino <dapal@debian.org>  Wed, 16 Nov 2011 22:08:37 +0100
+
+node-express (2.4.7-2) unstable; urgency=low
+
+  * Compliance to Debian Javascript Policy
+
+ -- David Paleino <dapal@debian.org>  Sat, 15 Oct 2011 23:54:12 +0200
+
+node-express (2.4.7-1) unstable; urgency=low
+
+  * Initial release (Closes: #645187)
+
+ -- David Paleino <dapal@debian.org>  Thu, 13 Oct 2011 13:31:03 +0200

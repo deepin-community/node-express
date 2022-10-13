@@ -1,0 +1,104 @@
+Source: node-express
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Yadd <yadd@debian.org>,
+           Jonas Smedegaard <dr@jones.dk>
+Section: javascript
+Priority: optional
+Testsuite: autopkgtest-pkg-nodejs
+Build-Depends: debhelper-compat (= 13),
+               mocha,
+               node-accepts,
+               node-after,
+               node-array-flatten,
+               node-body-parser,
+               node-content-disposition,
+               node-content-type,
+               node-cookie,
+               node-cookies,
+               node-cookiejar,
+               node-cookie-parser,
+               node-cookie-signature,
+               node-debug,
+               node-depd,
+               node-ejs,
+               node-encodeurl,
+               node-escape-html,
+               node-etag (>= 1.8.1),
+               node-extend,
+               node-finalhandler,
+               node-formidable,
+               node-form-data,
+               node-fresh,
+               node-keygrip,
+               node-marked,
+               node-merge-descriptors,
+               node-methods,
+               node-on-finished,
+               node-on-headers,
+               node-parseurl,
+               node-path-to-regexp,
+               node-proxy-addr,
+               node-qs,
+               node-range-parser,
+               node-safe-buffer,
+               node-should,
+               node-send,
+               node-serve-static (>= 1.14.1),
+               node-setprototypeof,
+               node-statuses,
+               node-supertest (>= 3.3.0),
+               node-type-is,
+               node-uid-safe,
+               node-utils-merge,
+               node-vary,
+               node-vhost,
+               nodejs,
+               dh-sequence-nodejs
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/js-team/node-express
+Vcs-Git: https://salsa.debian.org/js-team/node-express.git
+Homepage: https://expressjs.com
+Rules-Requires-Root: no
+
+Package: node-express
+Architecture: all
+Depends: ${misc:Depends},
+         node-accepts,
+         node-array-flatten,
+         node-body-parser,
+         node-content-disposition,
+         node-content-type,
+         node-cookie,
+         node-cookie-signature,
+         node-debug,
+         node-depd,
+         node-encodeurl,
+         node-escape-html,
+         node-etag (>= 1.8.1),
+         node-finalhandler,
+         node-fresh,
+         node-merge-descriptors,
+         node-methods,
+         node-on-finished,
+         node-parseurl,
+         node-path-to-regexp,
+         node-proxy-addr,
+         node-qs,
+         node-range-parser,
+         node-safe-buffer,
+         node-send,
+         node-serve-static (>= 1.14.1),
+         node-setprototypeof,
+         node-statuses,
+         node-type-is,
+         node-utils-merge,
+         node-vary,
+         nodejs
+Suggests: node-express-generator
+Provides: ${nodejs:Provides}
+Description: web application framework for node
+ Express is a minimal and flexible node.js web application framework,
+ providing a robust set of features for building single and multi-page,
+ and hybrid web applications.
+ .
+ Node.js is an event-based server-side JavaScript engine.
