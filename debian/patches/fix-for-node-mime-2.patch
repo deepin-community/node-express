@@ -1,0 +1,176 @@
+Description: fix for node-mime 2
+Author: Yadd <yadd@debian.org>
+Forwarded: no
+Last-Update: 2022-03-26
+
+--- a/lib/response.js
++++ b/lib/response.js
+@@ -599,7 +599,7 @@
+ };
+ 
+ /**
+- * Set _Content-Type_ response header with `type` through `mime.lookup()`
++ * Set _Content-Type_ response header with `type` through `mime.getType()`
+  * when it does not contain "/", or set the Content-Type to `type` otherwise.
+  *
+  * Examples:
+@@ -618,7 +618,7 @@
+ res.contentType =
+ res.type = function contentType(type) {
+   var ct = type.indexOf('/') === -1
+-    ? mime.lookup(type)
++    ? mime.getType(type)
+     : type;
+ 
+   return this.set('Content-Type', ct);
+@@ -785,10 +785,6 @@
+       if (Array.isArray(value)) {
+         throw new TypeError('Content-Type cannot be set to an Array');
+       }
+-      if (!charsetRegExp.test(value)) {
+-        var charset = mime.charsets.lookup(value.split(';')[0]);
+-        if (charset) value += '; charset=' + charset.toLowerCase();
+-      }
+     }
+ 
+     this.setHeader(field, value);
+--- a/lib/utils.js
++++ b/lib/utils.js
+@@ -81,7 +81,7 @@
+ exports.normalizeType = function(type){
+   return ~type.indexOf('/')
+     ? acceptParams(type)
+-    : { value: mime.lookup(type), params: {} };
++    : { value: mime.getType(type), params: {} };
+ };
+ 
+ /**
+--- a/test/express.static.js
++++ b/test/express.static.js
+@@ -41,7 +41,7 @@
+     it('should set Content-Type', function (done) {
+       request(this.app)
+         .get('/todo.txt')
+-        .expect('Content-Type', 'text/plain; charset=UTF-8')
++        .expect('Content-Type', 'text/plain')
+         .expect(200, done)
+     })
+ 
+--- a/test/res.download.js
++++ b/test/res.download.js
+@@ -26,7 +26,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'text/html; charset=UTF-8')
++      .expect('Content-Type', 'text/html')
+       .expect('Content-Disposition', 'attachment; filename="user.html"')
+       .expect(200, '<p>{{user.name}}</p>', done)
+     })
+@@ -69,7 +69,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'text/html; charset=UTF-8')
++      .expect('Content-Type', 'text/html')
+       .expect('Content-Disposition', 'attachment; filename="document"')
+       .expect(200, done)
+     })
+@@ -86,7 +86,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'text/html; charset=UTF-8')
++      .expect('Content-Type', 'text/html')
+       .expect('Content-Disposition', 'attachment; filename="user.html"')
+       .expect(200, cb);
+     })
+@@ -369,7 +369,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'text/html; charset=UTF-8')
++      .expect('Content-Type', 'text/html')
+       .expect('Content-Disposition', 'attachment; filename="document"')
+       .expect(200, cb);
+     })
+@@ -388,7 +388,7 @@
+       request(app)
+       .get('/')
+       .expect(200)
+-      .expect('Content-Type', 'text/html; charset=UTF-8')
++      .expect('Content-Type', 'text/html')
+       .expect('Content-Disposition', 'attachment; filename="document"')
+       .end(cb)
+     })
+--- a/test/res.json.js
++++ b/test/res.json.js
+@@ -135,7 +135,7 @@
+ 
+         request(app)
+           .get('/')
+-          .expect('Content-Type', 'application/json; charset=utf-8')
++          .expect('Content-Type', 'application/json')
+           .expect(200, '', done)
+       })
+     })
+--- a/test/res.send.js
++++ b/test/res.send.js
+@@ -217,7 +217,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'text/plain; charset=utf-8')
++      .expect('Content-Type', 'text/plain')
+       .expect(200, 'hey', done);
+     })
+ 
+--- a/test/res.sendFile.js
++++ b/test/res.sendFile.js
+@@ -1025,7 +1025,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'text/plain; charset=utf-8')
++      .expect('Content-Type', 'text/plain')
+       .end(done);
+     })
+ 
+@@ -1267,7 +1267,7 @@
+ 
+         request(app)
+         .get('/')
+-        .expect('Content-Type', 'text/html; charset=UTF-8')
++        .expect('Content-Type', 'text/html')
+         .expect(200, '<p>{{user.name}}</p>', done);
+       })
+     })
+@@ -1282,7 +1282,7 @@
+ 
+         request(app)
+         .get('/')
+-        .expect('Content-Type', 'text/html; charset=UTF-8')
++        .expect('Content-Type', 'text/html')
+         .expect(200, '<p>{{user.name}}</p>', done);
+       })
+ 
+@@ -1295,7 +1295,7 @@
+ 
+         request(app)
+         .get('/')
+-        .expect('Content-Type', 'text/html; charset=UTF-8')
++        .expect('Content-Type', 'text/html')
+         .expect(200, '<p>{{user.name}}</p>', done);
+       })
+ 
+--- a/test/res.type.js
++++ b/test/res.type.js
+@@ -14,7 +14,7 @@
+ 
+       request(app)
+       .get('/')
+-      .expect('Content-Type', 'application/javascript; charset=utf-8')
++      .expect('Content-Type', 'application/javascript')
+       .end(done)
+     })
+ 

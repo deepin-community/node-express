@@ -1,10 +1,11 @@
 version=4
 opts=\
-filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-express-$1.tar.gz/,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-express-$1/,\
 dversionmangle=auto \
  https://github.com/visionmedia/express/tags .*/archive/.*/v?([\d\.]+).tar.gz group
 
-# It is not recommended use npmregistry. Please investigate more.
-# Take a look at https://wiki.debian.org/debian/watch/
 opts="searchmode=plain,component=types-express,ctype=nodejs,pgpmode=none" \
  https://registry.npmjs.org/@types/express https://registry.npmjs.org/@types/express/-/express-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+opts="searchmode=plain,component=types-express-serve-static-core,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-types-express-serve-static-core-$1/" \
+ https://registry.npmjs.org/@types/express-serve-static-core https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-([\d\.]+)@ARCHIVE_EXT@ checksum

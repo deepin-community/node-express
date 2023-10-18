@@ -1,3 +1,60 @@
+node-express (4.18.2+~cs8.34.50-1) unstable; urgency=medium
+
+  * Team upload
+  * Set upstream metadata fields: Bug-Database, Repository-Browse.
+  * Update standards version to 4.6.2, no changes needed.
+  * Embed missing @types/express-serve-static-core and repack
+
+ -- Yadd <yadd@debian.org>  Mon, 10 Apr 2023 16:02:57 +0400
+
+node-express (4.18.2+~4.17.14-1) unstable; urgency=medium
+
+  * Declare compliance with policy 4.6.1
+  * New upstream version 4.18.2+~4.17.14 (fix test for nodejs 18)
+
+ -- Yadd <yadd@debian.org>  Mon, 10 Oct 2022 10:26:37 +0200
+
+node-express (4.18.1+~4.17.13-1) unstable; urgency=medium
+
+  * New upstream version 4.18.1+~4.17.13
+
+ -- Yadd <yadd@debian.org>  Sat, 30 Apr 2022 07:10:55 +0200
+
+node-express (4.18.0+~4.17.13-1) unstable; urgency=medium
+
+  * New upstream version 4.18.0+~4.17.13
+  * Refresh patches
+  * Require node-statuses >= 2 and node-cookie >= 0.5
+
+ -- Yadd <yadd@debian.org>  Fri, 29 Apr 2022 16:00:23 +0200
+
+node-express (4.17.3+~4.17.13-2) unstable; urgency=medium
+
+  * Add fix for node-send >= 0.18
+
+ -- Yadd <yadd@debian.org>  Sat, 26 Mar 2022 08:30:10 +0100
+
+node-express (4.17.3+~4.17.13-1) unstable; urgency=medium
+
+  * New upstream version 4.17.3+~4.17.13
+  * Unfuzz patches
+  * Add test dependencies to node-http-errors and node-path-is-absolute
+  * Update test modules
+
+ -- Yadd <yadd@debian.org>  Fri, 18 Feb 2022 12:09:00 +0100
+
+node-express (4.17.2+~4.17.13-1) unstable; urgency=medium
+
+  * Fix filenamemangle
+  * Update nodejs dependency to any
+  * Use uscan group
+  * New upstream version 4.17.2+~4.17.13
+  * Update test modules
+  * Refresh patches
+  * Mark test dependencies with <!nocheck>
+
+ -- Yadd <yadd@debian.org>  Mon, 20 Dec 2021 08:25:39 +0100
+
 node-express (4.17.1+~cs4.17.13-1) unstable; urgency=medium
 
   * Team upload
