@@ -1,3 +1,5 @@
 workaround-node-serve-static-changes.diff
 workaround-node-path-to-regexp-changes.diff
 disable-mvc-tests.diff
+fix-for-node-mime-2.patch
+fix-test.patch

@@ -5,7 +5,7 @@ Last-Update: 2019-09-05
 
 --- a/test/express.static.js
 +++ b/test/express.static.js
-@@ -263,13 +263,13 @@
+@@ -264,13 +264,13 @@
        it('should fall-through when URL malformed', function (done) {
          request(this.app)
            .get('/%')
@@ -21,7 +21,7 @@ Last-Update: 2019-09-05
        })
  
        it('should fall-through when URL too long', function (done) {
-@@ -300,7 +300,7 @@
+@@ -301,7 +301,7 @@
          it('should redirect when directory without slash', function (done) {
            request(this.app)
              .get('/pets')
@@ -30,7 +30,7 @@ Last-Update: 2019-09-05
          })
        })
  
-@@ -315,11 +315,13 @@
+@@ -316,11 +316,13 @@
              .expect(404, 'Not Found', done)
          })
  
@@ -44,7 +44,7 @@ Last-Update: 2019-09-05
        })
      })
  
-@@ -331,8 +333,8 @@
+@@ -332,8 +334,8 @@
        it('should 405 when OPTIONS request', function (done) {
          request(this.app)
            .options('/todo.txt')
@@ -55,7 +55,7 @@ Last-Update: 2019-09-05
        })
  
        it('should 400 when URL malformed', function (done) {
-@@ -358,7 +360,7 @@
+@@ -359,7 +361,7 @@
  
          request(app)
            .get('/')
@@ -64,7 +64,7 @@ Last-Update: 2019-09-05
        })
  
        describe('with redirect: true', function () {
-@@ -369,13 +371,13 @@
+@@ -370,13 +372,13 @@
          it('should 404 when directory', function (done) {
            request(this.app)
              .get('/pets/')
@@ -80,7 +80,7 @@ Last-Update: 2019-09-05
          })
        })
  
-@@ -387,14 +389,16 @@
+@@ -388,14 +390,16 @@
          it('should 404 when directory', function (done) {
            request(this.app)
              .get('/pets/')
@@ -99,7 +99,7 @@ Last-Update: 2019-09-05
        })
      })
    })
-@@ -478,30 +482,31 @@
+@@ -479,30 +483,31 @@
        request(this.app)
          .get('/users')
          .expect('Location', '/users/')
@@ -135,7 +135,7 @@ Last-Update: 2019-09-05
      it('should ensure redirect URL is properly encoded', function (done) {
        request(this.app)
          .get('/snow')
-@@ -514,8 +519,9 @@
+@@ -515,8 +520,9 @@
        request(this.app)
          .get('/users')
          .expect('Content-Security-Policy', "default-src 'none'")
@@ -146,7 +146,7 @@ Last-Update: 2019-09-05
  
      it('should not redirect incorrectly', function (done) {
        request(this.app)
-@@ -528,11 +534,13 @@
+@@ -529,11 +535,13 @@
          this.app = createApp(fixtures, { 'redirect': false })
        })
  
@@ -160,7 +160,7 @@ Last-Update: 2019-09-05
      })
    })
  
-@@ -566,7 +574,7 @@
+@@ -567,7 +575,7 @@
        request(this.app)
          .get('/users')
          .expect(utils.shouldNotHaveHeader('x-custom'))
@@ -169,7 +169,7 @@ Last-Update: 2019-09-05
      })
    })
  
-@@ -697,7 +705,7 @@
+@@ -698,7 +706,7 @@
        request(this.app)
          .get('/users')
          .expect('Location', '/users/')
@@ -178,7 +178,7 @@ Last-Update: 2019-09-05
      })
    })
  
-@@ -711,7 +719,7 @@
+@@ -712,7 +720,7 @@
        request(this.app)
          .get('/static/users')
          .expect('Location', '/static/users/')
@@ -187,7 +187,7 @@ Last-Update: 2019-09-05
      })
  
      it('should not choke on auth-looking URL', function (done) {
-@@ -781,7 +789,7 @@
+@@ -782,7 +790,7 @@
        request(this.app)
          .get('/static/users')
          .expect('Location', '/static/users/')
@@ -196,7 +196,7 @@ Last-Update: 2019-09-05
      })
  
      it('should next() on mount point', function (done) {
-@@ -794,7 +802,7 @@
+@@ -795,7 +803,7 @@
        request(this.app)
          .get('/static')
          .expect('Location', '/static/')
@@ -207,7 +207,7 @@ Last-Update: 2019-09-05
  })
 --- a/test/express.urlencoded.js
 +++ b/test/express.urlencoded.js
-@@ -174,7 +174,8 @@
+@@ -206,7 +206,8 @@
            .post('/')
            .set('Content-Type', 'application/x-www-form-urlencoded')
            .send('foo[0][bar]=baz&foo[0][fizz]=buzz&foo[]=done!')
@@ -219,7 +219,7 @@ Last-Update: 2019-09-05
        it('should parse deep object', function (done) {
 --- a/test/req.query.js
 +++ b/test/req.query.js
-@@ -26,7 +26,8 @@
+@@ -28,7 +28,8 @@
  
          request(app)
          .get('/?foo[0][bar]=baz&foo[0][fizz]=buzz&foo[]=done!')
